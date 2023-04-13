@@ -1,21 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
+import Logo from '../../../assets/logo.png';
 
 export default function Inicio({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>Bem vindo ao nosso projeto!</Text>
-      <Text>Responsavel John Lennon</Text>
-      <Button title = "Login" onPress={()=> navigation.navigate('Login')}/>
+      <Image source={Logo}/>
       <StatusBar style="auto" />
+      <Text style={{fontWeight: 'bold', }}>Por Grupo Genisys</Text>
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
