@@ -2,51 +2,48 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, FlatList, ScrollView }
 import iconeeee from '../../img/material-symbols_menu.png';
 import dados from '../../mock/eventos'
 import pontos from '../../mock/pontosTuristicos'
+import Topcontainer from "../../components/menunavigation/topcontainer";
 
-export default function Home() {
-    return (
-        <>
-            <View style={styles.boxSuperior}>
-                <Text style={styles.textoBoxSuperior}>Eventos</Text>
-                <Image source={iconeeee} style={styles.iconMenu} />
-            </View>
+export default function Home(navigation) {
+    return <>
 
-
+        <Topcontainer/>
             <FlatList
                 data={pontos}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={dados => dados.nome}
                 renderItem={({ item }) => (
-                    <View>
-                        <TouchableOpacity style={styles.cardsPontosTuristicos}>
+                        <View style={{paddingBottom:20}}>
                             <Text style={styles.nomePontosTuristicos}>{item.nome}</Text>
-                            <Image source={item.foto} />
-                            <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
-                        </TouchableOpacity>
-                    </View>
+                            <TouchableOpacity style={styles.cardsPontosTuristicos}>
+                                <Image source={item.foto} />
+                                <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
+                            </TouchableOpacity>
+                        </View>
                 )}
                 ListHeaderComponent={
                     <View style={styles.boxEventos}>
-                        <FlatList
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            keyExtractor={dados => dados.evento}
-                            data={dados}
-                            renderItem={({ item }) => (
-                                <TouchableOpacity style={styles.cardEvento}>
-                                    <Text style={styles.cardTextoEvento}>{item.evento}</Text>
-                                    <Text style={styles.cardDataEvento}>{item.data}</Text>
-                                </TouchableOpacity>
-                            )
-                            }
-                        />
-
+            <FlatList
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={dados => dados.evento}
+                data={dados}
+                renderItem={({ item }) => (
+                    <View style={{marginBottom:20}}>
+                        <TouchableOpacity style={styles.cardEvento} onPress={() => navigation.navigate("Eventos")}>
+                            <Text style={styles.cardTextoEvento}>{item.evento}</Text>
+                            <Text style={styles.cardDataEvento}>{item.data}</Text>
+                        </TouchableOpacity>
+                    </View>
+                    )
+                         }
+                        /> 
                         <Text style={styles.textoPontosTuristicos}>Pontos Turísticos</Text>
                     </View>
                 }
             />
         </>
-    )
+    
 }
 
 const styles = StyleSheet.create({
@@ -105,11 +102,16 @@ const styles = StyleSheet.create({
         fontWeight:'500',
     },
     cardsPontosTuristicos:{
-        alignItems:'center',
-        paddingLeft: 5,
-        paddingRight: 5,
-        width: '100%',
-        marginBottom: 30
+        width:365,
+        height:250,
+        marginBottom: 30, 
+        marginLeft:15,
+        backgroundColor:"#FFFFFF",
+        borderRadius:6,
+        elevation: 5,
+        shadowColor: '#030002', 
+        shadowOpacity: 0.25, 
+        shadowRadius: 5 
     },
     nomePontosTuristicos:{
         marginRight: 'auto',
@@ -119,9 +121,13 @@ const styles = StyleSheet.create({
     },
     descricaoPontosTuristicos:{
         alignItems:'center',
-        justifyContent: 'center',
-        marginTop: 8,
+        marginTop: 10,
+        marginLeft:10,
+        marginRight:10,
         fontSize: 15,
+        fontWeight:'bold',
+        paddingLeft: 6,
+        paddingRight: 6,
     },
 
 

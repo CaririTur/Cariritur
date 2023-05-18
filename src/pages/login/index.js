@@ -1,10 +1,30 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
 import Google from "../../../assets/google.png";
 import Ios from "../../../assets/ios.png";
 import Facebook from "../../../assets/facebook.png";
 
+
 export default function Login({navigation}){
   return <>
+
+  <LinearGradient 
+  style={{
+	height:"110%", 
+	width: "120%", 
+	marginTop: 0, 
+  position:"absolute",
+	borderRadius: 5, 
+  }}
+
+	start={{x:0,y:1}}
+	end={{x:1,y:0}}
+  locations={[0.25,0.75]}
+	colors={['#00b9fb','#cdf2ff']}>
+    
+</LinearGradient>
+
+
     <View style = {styles_login.container}>
       <View>
         <Text style = {styles_login.text_bold} >Bem-vindo</Text>
@@ -12,11 +32,11 @@ export default function Login({navigation}){
       </View>
 
       <View  style = {styles_login.container_input}>
-        <TextInput placeholder="E-mail" style = {styles_login.text_input}/>
+        <TextInput placeholder="E-mail" placeholderTextColor="#190152" style = {styles_login.text_input}/>
       </View>
 
       <View  style = {styles_login.container_input}>
-        <TextInput placeholder="Senha" style = {styles_login.text_input} secureTextEntry={true}/>
+        <TextInput placeholder="Senha" placeholderTextColor="#190152" style = {styles_login.text_input} secureTextEntry={true}/>
       </View>
 
       <View>
@@ -39,6 +59,7 @@ export default function Login({navigation}){
         <Text>Ainda não tem uma conta?</Text>
         <Text style={ styles_login.text_blue } onPress={() => navigation.navigate("Cadastro")}>Registre-se</Text>
       </View>
+      
 
     </View>
 
@@ -60,6 +81,8 @@ const styles_login = StyleSheet.create({
     width: 340,
     height: 55,
     padding: 17,
+    borderColor:"#190152",
+    borderWidth:1
   },
 
   container_input: {
@@ -79,7 +102,9 @@ const styles_login = StyleSheet.create({
   },
 
   text_button: {
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight:'bold'
   },
 
   button: {
@@ -95,7 +120,7 @@ const styles_login = StyleSheet.create({
   entra_como: {
     marginTop: 37,
     marginBottom: 30,
-    color: '#C4C4C4',
+    color: '#FFFFFF',
     fontWeight: 'bold'
   },
 
@@ -111,8 +136,9 @@ const styles_login = StyleSheet.create({
   },
 
   text_blue: {
-    color: 'blue',
+    color: '#FFFFFF',
     marginLeft: 5,
+    fontWeight: 'bold'
   },
 
   container_text: {
