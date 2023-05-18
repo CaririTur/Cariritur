@@ -40,8 +40,8 @@ export default function Login({navigation}){
       </View>
 
       <View>
-        <TouchableOpacity style={styles_login.button} >
-          <Text  style={styles_login.text_button} onPress={() => navigation.navigate("Homepage")}>Entrar</Text>
+        <TouchableOpacity style={styles_login.button} onPress={() => navigation.navigate("Homepage")}>
+          <Text  style={styles_login.text_button}>Entrar</Text>
         </TouchableOpacity>
       </View>
 

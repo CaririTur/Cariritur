@@ -1,4 +1,4 @@
-import { View ,Image , StyleSheet, StatusBar } from "react-native";
+import { View ,Image , StyleSheet, StatusBar, TouchableOpacity} from "react-native";
 import CaririTur from "../../../assets/components/cariritur.png";
 import Menu from '../../img/material-symbols_menu.png';
 
@@ -8,7 +8,10 @@ export default function Topcontainer(){
         <StatusBar/>
         <View style={styles.container}>
             <Image source={CaririTur}/>
-            <Image source={Menu}/>
+            
+            <TouchableOpacity>
+                <Image source={Menu}/>
+            </TouchableOpacity>
         </View>
         </>
 }
