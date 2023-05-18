@@ -1,7 +1,29 @@
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {StyleSheet, Text, TextInput, TouchableOpacity, View,Image} from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import Google from "../../../assets/google.png";
+import Ios from "../../../assets/ios.png";
+import Facebook from "../../../assets/facebook.png";
+
 
 export default function Cadastro({navigation}) {
     return <>
+
+    <LinearGradient 
+         style={{
+	    height:"110%", 
+	    width: "120%", 
+	    marginTop: 0, 
+        position:"absolute",
+	    borderRadius: 5, 
+     }}
+
+	    start={{x:0,y:1}}
+	    end={{x:1,y:0}}
+        locations={[0.25,0.75]}
+	    colors={['#00b9fb','#cdf2ff']}>
+    
+    </LinearGradient>
+
         <View style={styles_jl.container}>
             <View>
                 <Text style={styles_jl.text_bold}>Bem vindos !</Text>
@@ -9,19 +31,19 @@ export default function Cadastro({navigation}) {
             </View>
 
             <View style={styles_jl.container_input}>
-                <TextInput placeholder="Nome Completo" style={styles_jl.text_input}/>
+                <TextInput placeholder="Nome Completo" placeholderTextColor="#190152" style={styles_jl.text_input}/>
             </View>
 
             <View style={styles_jl.container_input}>
-                <TextInput placeholder="Example@gmail.com" style={styles_jl.text_input}/>
+                <TextInput placeholder="Example@gmail.com" placeholderTextColor="#190152" style={styles_jl.text_input}/>
             </View>
 
             <View style={styles_jl.container_input}>
-                <TextInput placeholder="Senha" style={styles_jl.text_input} secureTextEntry={true}/>
+                <TextInput placeholder="Senha" placeholderTextColor="#190152" style={styles_jl.text_input} secureTextEntry={true}/>
             </View>
 
             <View style={styles_jl.container_input}>
-                <TextInput placeholder="Confirme sua senha " style={styles_jl.text_input} secureTextEntry={true}/>
+                <TextInput placeholder="Confirme sua senha " placeholderTextColor="#190152" style={styles_jl.text_input} secureTextEntry={true}/>
             </View>
 
 
@@ -43,9 +65,22 @@ export default function Cadastro({navigation}) {
                 <Text style={styles_jl.hr}>Ou entre com</Text>
             </View>
 
-            <View>
+            <View style={ styles_jl.container_img }>
+                <TouchableOpacity>
+                    <Image source={Google} style={styles_jl.img} />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Image source={Ios} style={styles_jl.img} />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Image source={Facebook} style={styles_jl.img} />
+                </TouchableOpacity>
 
             </View>
+
+
         </View>
 
     </>
@@ -65,6 +100,8 @@ const styles_jl = StyleSheet.create({
         width: 339,
         height: 55,
         padding: 17,
+        borderColor:"#190152",
+        borderWidth:1
     },
 
     container_input: {
@@ -73,14 +110,14 @@ const styles_jl = StyleSheet.create({
     },
 
     text_bold: {
-        fontSize: 25,
+        fontSize: 35,
         fontWeight: 'bold',
     },
 
     text_static: {
         fontSize: 15,
-        marginBottom: 105,
-        marginLeft: 10
+        marginBottom:40,
+        marginLeft: 25
     },
 
     term_priv: {
@@ -89,8 +126,9 @@ const styles_jl = StyleSheet.create({
     },
 
     text_bottom: {
-        color: '#FFFFFF'
-
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: 20,
     },
 
     bottom: {
@@ -105,9 +143,21 @@ const styles_jl = StyleSheet.create({
 
     hr: {
         marginTop: 37,
-        color: '#C4C4C4',
-        fontWeight: 'bold'
+        color: '#ffffff',
+        fontWeight: 'bold',
+        marginBottom:25
     },
 
+    img: {
+        marginLeft: 20,
+        marginRight: 20,
+      },
+    
+      container_img: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+    
 
 });

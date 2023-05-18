@@ -2,15 +2,13 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, FlatList, ScrollView }
 import iconeeee from '../../img/material-symbols_menu.png';
 import dados from '../../mock/eventos'
 import pontos from '../../mock/pontosTuristicos'
+import Topcontainer from "../../components/menunavigation/topcontainer";
 
-export default function Home() {
+export default function Home(navigation) {
     return (
         <>
-            <View style={styles.boxSuperior}>
-                <Text style={styles.textoBoxSuperior}>Eventos</Text>
-                <Image source={iconeeee} style={styles.iconMenu} />
-            </View>
 
+        <Topcontainer/>
 
             <FlatList
                 data={pontos}
@@ -33,7 +31,7 @@ export default function Home() {
                             keyExtractor={dados => dados.evento}
                             data={dados}
                             renderItem={({ item }) => (
-                                <TouchableOpacity style={styles.cardEvento}>
+                                <TouchableOpacity style={styles.cardEvento} onPress={() => navigation.navigate("Eventos")}>
                                     <Text style={styles.cardTextoEvento}>{item.evento}</Text>
                                     <Text style={styles.cardDataEvento}>{item.data}</Text>
                                 </TouchableOpacity>
@@ -109,7 +107,8 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         width: '100%',
-        marginBottom: 30
+        marginBottom: 30, 
+        
     },
     nomePontosTuristicos:{
         marginRight: 'auto',
@@ -122,6 +121,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 8,
         fontSize: 15,
+        paddingLeft: 6,
+        paddingRight: 6,
     },
 
 
