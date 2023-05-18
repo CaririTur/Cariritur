@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 
-export default function Cadastro() {
+export default function Cadastro({navigation}) {
     return <>
         <View style={styles_jl.container}>
             <View>
@@ -34,7 +34,7 @@ export default function Cadastro() {
             </View>
 
             <View>
-                <TouchableOpacity style={styles_jl.bottom}>
+                <TouchableOpacity style={styles_jl.bottom} onPress={() => navigation.navigate("Homepage")}>
                     <Text style={styles_jl.text_bottom}>Registre-se</Text>
                 </TouchableOpacity>
             </View>
