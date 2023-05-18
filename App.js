@@ -9,6 +9,7 @@ import Inicio from './src/pages/inicio';
 import Login from './src/pages/login';
 import Cadastro from './src/pages/cadastro';
 import Eventos from './src/pages/eventos';
+import Routes from './src/routes';
 
 
 const Stack = createNativeStackNavigator();
@@ -16,13 +17,7 @@ const Stack = createNativeStackNavigator();
 export default function App(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='inicio'>
-        <Stack.Screen options={{headerShown: false}} name='Inicio' component={Inicio}/>
-        <Stack.Screen options={{headerShown: false}} name='Login' component={Login}/>
-        <Stack.Screen options={{headerShown: false}} name='Cadastro' component={Cadastro}/>
-        <Stack.Screen options={{headerShown: false}} name='Homepage' component={Home}/>
-        <Stack.Screen options={{headerShown: false}} name='Eventos' component={Eventos}/>
-      </Stack.Navigator>
+     <Routes/>
     </NavigationContainer>
   );
 };
