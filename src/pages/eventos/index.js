@@ -1,9 +1,14 @@
-import { View , Text} from "react-native";
+import { View , Text, TouchableOpacity} from "react-native";
+import Topcontainer from "../../components/menunavigation/topcontainer";
 
 export default function Eventos(navigation){
-    return(
+    return<>
+        <Topcontainer/>
         <View>
-            <Text> Hello , World</Text>
+            <Text>Eventos</Text>
+            <TouchableOpacity>
+                
+            </TouchableOpacity>
         </View>
-    );
+        </>
 }

@@ -4,7 +4,7 @@ import dados from '../../mock/eventos'
 import pontos from '../../mock/pontosTuristicos'
 import Topcontainer from "../../components/menunavigation/topcontainer";
 
-export default function Home(navigation) {
+export default function Home({navigation}) {
     return <>
 
         <Topcontainer/>
@@ -31,8 +31,8 @@ export default function Home(navigation) {
                 renderItem={({ item }) => (
                     <View style={{marginBottom:20}}>
                         <TouchableOpacity style={styles.cardEvento} onPress={() => navigation.navigate("Eventos")}>
+                            <Image source={item.photo}/>
                             <Text style={styles.cardTextoEvento}>{item.evento}</Text>
-                            <Text style={styles.cardDataEvento}>{item.data}</Text>
                         </TouchableOpacity>
                     </View>
                     )
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
         height: 150,
         marginTop: 20,
         marginBottom: 20,
+
     },
     cardEvento: {
         backgroundColor: '#CDCDCD',

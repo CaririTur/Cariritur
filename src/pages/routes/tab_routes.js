@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import Inicio from "./inicio";
 // import Login from "./login";
 // import Cadastro from "./cadastro";
-import Home from "../../components/home page/home";
+import Home from "../../pages/homepage/home";
 
 
 const Tab = createBottomTabNavigator();
