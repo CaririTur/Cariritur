@@ -1,15 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import Routes from "../../routes";
-import TabRoutes from "./pages/routes/tab_routes";
+import TabRoutes from "./tab_routes";
 
-import Inicio from "./pages/inicio";
-import Login from "./pages/login";
-import Cadastro from "./pages/cadastro";
-import Eventos from "./pages/eventos";
+import Inicio from "../../../pages/Inicio";
+import Login from "../../../pages/Login";
+import Cadastro from "../../../pages/Cadastro";
+import Eventos from "../../../pages/Eventos";
+import Profile from "../../../pages/Profile";
+import New from "../../../pages/New";
+import Rotas from "../../../pages/Rotas";
+
 
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +37,19 @@ export default function Routes() {
           name="Eventos"
           component={Eventos}
         />
+          <Stack.Screen
+          name="Profile"
+          component={Profile}
+        />
+          <Stack.Screen
+          name="Rotas"
+          component={Rotas}
+        />
+          <Stack.Screen
+          name="Novo"
+          component={New}
+        />
+        
       </Stack.Navigator>
   );
 }
