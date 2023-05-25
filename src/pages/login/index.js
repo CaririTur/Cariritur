@@ -4,70 +4,98 @@ import Google from "../../../assets/google.png";
 import Ios from "../../../assets/ios.png";
 import Facebook from "../../../assets/facebook.png";
 
+import {StatusBar} from 'expo-status-bar';
+import Logo from '../../../assets/logo.png';
+import {useEffect} from "react";
 
-export default function Login({navigation}){
+export default function StartPage({navigation}) {
+  useEffect(() => {
+    const time = setTimeout(() => {
+      navigation.navigate("Login");
+
+    }, 2000);
+
+    return () => clearTimeout(time)
+  }, []);
+
+  return (
+      <TouchableOpacity style={styles.container_page}>
+        <Image source={Logo}/>
+        <StatusBar style="auto"/>
+        <Text style={{fontWeight: 'bold',}}>Por Grupo Genisys</Text>
+      </TouchableOpacity>
+
+
+  )}
+
+export function Login({navigation}){
   return <>
 
-  <LinearGradient 
+  <LinearGradient
   style={{
-	height:"110%", 
-	width: "120%", 
-	marginTop: 0, 
+	height:"110%",
+	width: "120%",
+	marginTop: 0,
   position:"absolute",
-	borderRadius: 5, 
+	borderRadius: 5,
   }}
 
 	start={{x:0,y:1}}
 	end={{x:1,y:0}}
   locations={[0.25,0.75]}
 	colors={['#00b9fb','#cdf2ff']}>
-    
+
 </LinearGradient>
 
 
-    <View style = {styles_login.container}>
+    <View style = {styles.container}>
       <View>
-        <Text style = {styles_login.text_bold} >Bem-vindo</Text>
-        <Text style = {styles_login.text_static} >Entre com sua conta</Text>
+        <Text style = {styles.text_bold} >Bem-vindo</Text>
+        <Text style = {styles.text_static} >Entre com sua conta</Text>
       </View>
 
-      <View  style = {styles_login.container_input}>
-        <TextInput placeholder="E-mail" placeholderTextColor="#190152" style = {styles_login.text_input}/>
+      <View  style = {styles.container_input}>
+        <TextInput placeholder="E-mail" placeholderTextColor="#190152" style = {styles.text_input}/>
       </View>
 
-      <View  style = {styles_login.container_input}>
-        <TextInput placeholder="Senha" placeholderTextColor="#190152" style = {styles_login.text_input} secureTextEntry={true}/>
+      <View  style = {styles.container_input}>
+        <TextInput placeholder="Senha" placeholderTextColor="#190152" style = {styles.text_input} secureTextEntry={true}/>
       </View>
 
       <View>
-        <TouchableOpacity style={styles_login.button} onPress={() => navigation.navigate("TabHome")}>
-          <Text  style={styles_login.text_button} >Entrar</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("TabHome")}>
+          <Text  style={styles.text_button} >Entrar</Text>
         </TouchableOpacity>
       </View>
 
       <View>
-        <Text style={styles_login.entra_como}>Ou entre com</Text>
+        <Text style={styles.entra_como}>Ou entre com</Text>
       </View>
 
-      <View style={ styles_login.container_img }>
-        <Image source={Google} style={styles_login.img} />
-        <Image source={Ios} style={styles_login.img} />
-        <Image source={Facebook} style={styles_login.img} />
+      <View style={ styles.container_img }>
+        <Image source={Google} style={styles.img} />
+        <Image source={Ios} style={styles.img} />
+        <Image source={Facebook} style={styles.img} />
       </View>
 
-      <View style={ styles_login.container_text }>
+      <View style={ styles.container_text }>
         <Text>Ainda não tem uma conta?</Text>
-        <Text style={ styles_login.text_blue } onPress={() => navigation.navigate("Cadastro")}>Registre-se</Text>
+        <Text style={ styles.text_blue } onPress={() => navigation.navigate("Cadastro")}>Registre-se</Text>
       </View>
-      
+
 
     </View>
 
   </>
 }
 
-const styles_login = StyleSheet.create({
-
+const styles = StyleSheet.create({
+  container_page: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     height: '100%',
     display: 'flex',
@@ -77,7 +105,6 @@ const styles_login = StyleSheet.create({
 
   text_input: {
     borderRadius: 12,
-    borderWidth: 0.5,
     width: 340,
     height: 55,
     padding: 17,

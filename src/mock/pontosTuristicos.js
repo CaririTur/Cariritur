@@ -1,11 +1,11 @@
-import museu from '../../src/img/museu.png'
-import peCicero from '../../src/img/pe-cicero.png'
+import museu from './img/museu.png'
+import peCicero from './img/pe-cicero.png'
 
 const pontosTuristicos = [
     {
         "nome": "Museu Paleontologia",
         "foto": museu,
-        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc, sed lacinia, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc, sed lacinia" 
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc, sed lacinia, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc, sed lacinia"
     },
 
     {
@@ -25,7 +25,7 @@ const pontosTuristicos = [
         "foto": peCicero,
         "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc , Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum suscipit nunc, sed lacinia"
     }
-    
+
 ]
 
 export default pontosTuristicos;

@@ -2,24 +2,23 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabRoutes from "./tab_routes";
 
-import Inicio from "../../../pages/Inicio";
-import Login from "../../../pages/Login";
-import Cadastro from "../../../pages/Cadastro";
-import Eventos from "../../../pages/Eventos";
-import Profile from "../../../pages/Profile";
-import New from "../../../pages/New";
-import Rotas from "../../../pages/Rotas";
+import StartPage, {Login} from "../pages/login";
+import Cadastro from "../pages/cadastro";
+import Eventos from "../pages/eventos";
+import Profile from "../pages/profile";
+import New from "../pages/new";
+import Rotas from "../pages/rotas";
 
 
 
 const Stack = createNativeStackNavigator();
 
-export default function Routes() {
+export default function Login_routes() {
   return (
       <Stack.Navigator initialRouteName="Inicio" screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="Inicio"
-          component={Inicio}
+          component={StartPage}
         />
         <Stack.Screen
           name="Login"
@@ -49,7 +48,7 @@ export default function Routes() {
           name="Novo"
           component={New}
         />
-        
+
       </Stack.Navigator>
   );
 }

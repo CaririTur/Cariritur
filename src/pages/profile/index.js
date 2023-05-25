@@ -1,17 +1,15 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Profilecontainer from "../../components/menunavigation/profilecontainer";
 
 export default function Profile(navigation){
     return(
 
      <SafeAreaView>
-        <Profilecontainer/>
         <View>
             <Text>Perfil</Text>
             <TouchableOpacity>
-                
+
             </TouchableOpacity>
 
         <View>
