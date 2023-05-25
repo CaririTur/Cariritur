@@ -10,6 +10,7 @@ import Inicio from "./pages/inicio";
 import Login from "./pages/login";
 import Cadastro from "./pages/cadastro";
 import Eventos from "./pages/eventos";
+import EventosUnicos from "./pages/evento-unico";
 
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,11 @@ export default function Routes() {
         <Stack.Screen
           name="Eventos"
           component={Eventos}
+        />
+        
+        <Stack.Screen
+          name="EventosUnicos"
+          component={EventosUnicos}
         />
       </Stack.Navigator>
   );

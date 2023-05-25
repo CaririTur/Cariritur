@@ -1,7 +1,7 @@
-import { View , Text, TouchableOpacity, FlatList,StyleSheet,Image} from "react-native";
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image } from "react-native";
 import Topcontainer from "../../components/menunavigation/topcontainer";
 import eventos from "../../mock/eventos";
-
+import { useNavigation } from "@react-navigation/native";
 
 import Romaria from "../../../assets/homepage/Romaria";
 
@@ -25,14 +25,15 @@ export default function Eventos(navigation){
                 </>
             }/>              
 
-        </View>
+            </View>
         </>
+    )
 }
 
-const style = StyleSheet.create ({
+const style = StyleSheet.create({
 
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
     },
 
     container_filho:{
@@ -49,26 +50,26 @@ const style = StyleSheet.create ({
         backgroundColor:"#ffffff",
     },
 
-    date:{
-        fontSize:18,
-        marginLeft:18,
-        marginBottom:10,
-        marginTop:10
+    date: {
+        fontSize: 18,
+        marginLeft: 18,
+        marginBottom: 10,
+        marginTop: 10
     },
 
-    text:{
-        fontSize:18,
-        marginLeft:10,
-        marginTop:10,
-        fontWeight:"bold"
+    text: {
+        fontSize: 18,
+        marginLeft: 10,
+        marginTop: 10,
+        fontWeight: "bold"
     },
 
-    
-    text_description:{
-        fontSize:15,
-        marginLeft:10,
-        marginRight:10,
-        marginTop:10,
+
+    text_description: {
+        fontSize: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
     },
 
 });
