@@ -8,7 +8,7 @@ import {CommonActions, useNavigation} from '@react-navigation/native';
 import New from "../pages/new";
 import Profile from "../pages/profile";
 import Rotas from "../pages/rotas";
-import Eventos from "../pages/Eventos";
+import Eventos from "../pages/eventos";
 import Home from "../pages/homepage";
 
 import HomeIcon from "../../assets/tabnavigation/Home.svg"
