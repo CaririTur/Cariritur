@@ -31,7 +31,6 @@ export default function Home({navigation}) {
                 renderItem={({ item }) => (
                     <View style={{marginBottom:20}}>
                         <TouchableOpacity style={styles.cardEvento} onPress={() => navigation.navigate("Eventos")}>
-                            <Image source={item.photo}/>
                             <Text style={styles.cardTextoEvento}>{item.evento}</Text>
                         </TouchableOpacity>
                     </View>
