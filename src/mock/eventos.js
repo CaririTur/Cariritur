@@ -1,7 +1,13 @@
+import Romaria from "../../assets/homepage/Romaria.svg";
+
+
+
+
 const eventos = [
     {
         "evento": "Romaria das Candeias",
         "data": "12 de Dezembro",
+        "photo":Romaria
     },
 
     {
@@ -25,4 +31,4 @@ const eventos = [
     },
 ]
 
-export default eventos
+export default eventos;

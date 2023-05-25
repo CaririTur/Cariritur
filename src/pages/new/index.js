@@ -1,9 +1,8 @@
 import { View , Text, TouchableOpacity} from "react-native";
-
-export default function Eventos(navigation){
+export default function New(navigation){
     return<>
         <View>
-            <Text>Eventos</Text>
+            <Text>New</Text>
             <TouchableOpacity>
             </TouchableOpacity>
         </View>
