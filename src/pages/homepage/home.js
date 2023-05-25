@@ -18,6 +18,7 @@ export default function Home({navigation}) {
                             <TouchableOpacity style={styles.cardsPontosTuristicos}>
                                 <Image source={item.foto} />
                                 <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
+                                <Text style={styles.descricao}>{item.link}</Text>
                             </TouchableOpacity>
                         </View>
                 )}
@@ -125,7 +126,6 @@ const styles = StyleSheet.create({
         marginLeft:10,
         marginRight:10,
         fontSize: 15,
-        fontWeight:'bold',
         paddingLeft: 6,
         paddingRight: 6,
     },

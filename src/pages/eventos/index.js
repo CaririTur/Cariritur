@@ -9,15 +9,13 @@ export default function Eventos(navigation){
     return<>
         <Topcontainer/>
         <View>
-            
+            <View style={{ marginBottom: 10 }}/>
             <FlatList
                 keyExtractor={eventos => eventos.evento}
                 data={eventos}
                 renderItem={({ item }) => <>
+                <Text style={style.date}> {item.data}</Text>
                     <View style={style.container}>
-
-                        <Text style={style.date}> {item.data}</Text>
-
                         <TouchableOpacity style={style.container_filho}>
                             <Text style={style.text}>{item.evento}</Text>
                             <Text style={style.text_description}>{item.description}</Text>
@@ -48,7 +46,7 @@ const style = StyleSheet.create ({
         shadowColor: '#030002', 
         shadowOpacity: 0.25, 
         shadowRadius: 5 ,
-        backgroundColor:"#ffffff"
+        backgroundColor:"#ffffff",
     },
 
     date:{
