@@ -42,7 +42,7 @@ function Header({type, name}) {
                         }>
                             <Vector/>
                         </TouchableOpacity>
-                        <Text style={{color: "#190152", fontSize: 18, paddingLeft: 25}}>{name}</Text>
+                        <Text style={{color: "#027DC1", fontSize: 20, paddingLeft: 25, fontWeight:"bold"}}>{name}</Text>
                     </View>
                     <TouchableOpacity>
                         <Menu/>
