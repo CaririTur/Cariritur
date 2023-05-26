@@ -1,33 +1,27 @@
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image } from "react-native";
-import Topcontainer from "../../components/menunavigation/topcontainer";
 import eventos from "../../mock/eventos";
 import { useNavigation } from "@react-navigation/native";
 
-import Romaria from "../../../assets/homepage/Romaria";
-
-export default function Eventos(navigation){
+export default function Eventos(){
     return<>
-        <Topcontainer/>
         <View>
             <View style={{ marginBottom: 10 }}/>
             <FlatList
                 keyExtractor={eventos => eventos.evento}
                 data={eventos}
                 renderItem={({ item }) => <>
-                <Text style={style.date}> {item.data}</Text>
+                    <Text style={style.date}> {item.data}</Text>
                     <View style={style.container}>
                         <TouchableOpacity style={style.container_filho}>
                             <Text style={style.text}>{item.evento}</Text>
                             <Text style={style.text_description}>{item.description}</Text>
-                            <Image source={item.photo} style={{marginTop:10, height:139,width:337, marginLeft:10,}}/>
+                            <Image source={item.photo} style={{marginTop:10, height:139 ,width:337, marginLeft:10}}/>
                         </TouchableOpacity>
-                     </View>
+                    </View>
                 </>
-            }/>              
-
-            </View>
-        </>
-    )
+                }/>
+        </View>
+    </>
 }
 
 const style = StyleSheet.create({
@@ -44,8 +38,8 @@ const style = StyleSheet.create({
         marginRight:18,
         borderRadius:10,
         elevation:10,
-        shadowColor: '#030002', 
-        shadowOpacity: 0.25, 
+        shadowColor: '#030002',
+        shadowOpacity: 0.25,
         shadowRadius: 5 ,
         backgroundColor:"#ffffff",
     },
@@ -73,4 +67,3 @@ const style = StyleSheet.create({
     },
 
 });
-

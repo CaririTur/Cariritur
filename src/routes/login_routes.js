@@ -4,13 +4,12 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import Routes from "../../routes";
-import TabRoutes from "./pages/routes/tab_routes";
+import TabRoutes from "./tab_routes";
 
-import Inicio from "./pages/inicio";
-import Login from "./pages/login";
-import Cadastro from "./pages/cadastro";
-import Eventos from "./pages/eventos";
-import EventosUnicos from "./pages/evento-unico";
+import StartPage, {Login} from "../pages/login";
+import Cadastro from "../pages/cadastro";
+import Eventos from "../pages/eventos";
+import EventosUnicos from "../pages/evento-unico";
 
 
 const Stack = createNativeStackNavigator();
@@ -20,12 +19,12 @@ export default function Routes() {
       <Stack.Navigator initialRouteName="Inicio" screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="Inicio"
-          component={Inicio}
+          component={StartPage}
         />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-        />
+          <Stack.Screen
+              name="Login"
+              component={Login}
+          />
         <Stack.Screen
           name="Cadastro"
           component={Cadastro}
@@ -38,7 +37,7 @@ export default function Routes() {
           name="Eventos"
           component={Eventos}
         />
-        
+
         <Stack.Screen
           name="EventosUnicos"
           component={EventosUnicos}

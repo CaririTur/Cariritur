@@ -8,20 +8,20 @@ import Facebook from "../../../assets/facebook.png";
 export default function Cadastro({navigation}) {
     return <>
 
-    <LinearGradient 
+    <LinearGradient
          style={{
-	    height:"110%", 
-	    width: "120%", 
-	    marginTop: 0, 
+	    height:"110%",
+	    width: "120%",
+	    marginTop: 0,
         position:"absolute",
-	    borderRadius: 5, 
+	    borderRadius: 5,
      }}
 
 	    start={{x:0,y:1}}
 	    end={{x:1,y:0}}
         locations={[0.25,0.75]}
 	    colors={['#00b9fb','#cdf2ff']}>
-    
+
     </LinearGradient>
 
         <View style={styles_jl.container}>
@@ -101,7 +101,6 @@ const styles_jl = StyleSheet.create({
         height: 55,
         padding: 17,
         borderColor:"#190152",
-        borderWidth:1
     },
 
     container_input: {
@@ -152,12 +151,12 @@ const styles_jl = StyleSheet.create({
         marginLeft: 20,
         marginRight: 20,
       },
-    
+
       container_img: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
       },
-    
+
 
 });

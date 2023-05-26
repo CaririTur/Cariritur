@@ -35,14 +35,14 @@ function Header({type, name}) {
             <>
                 <StatusBar/>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.dispatch(CommonActions.goBack());
-                    }
-                    }>
-                        <Vector/>
-                    </TouchableOpacity>
-                    <View>
-                        <Text>{name}</Text>
+                    <View style={styles.header_container}>
+                        <TouchableOpacity onPress={() => {
+                            navigation.goBack()
+                        }
+                        }>
+                            <Vector/>
+                        </TouchableOpacity>
+                        <Text style={{color: "#190152", fontSize: 18, paddingLeft: 25}}>{name}</Text>
                     </View>
                     <TouchableOpacity>
                         <Menu/>
@@ -70,6 +70,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: 'center'
     },
+
+    header_container: {
+        flexDirection: 'row',
+        width: '25%',
+        alignItems: 'center'
+    }
 });
 
 const Tab = createBottomTabNavigator();
