@@ -1,16 +1,15 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import Login_routes from './src/routes/login_routes';
-
-
-const Stack = createNativeStackNavigator();
+import StackNavigation from "./src/routes/stack_navigation";
+import {createDrawerNavigator } from '@react-navigation/drawer';
+const Drawer = createDrawerNavigator();
 
 export default function App(){
   return (
     <NavigationContainer>
-     <Login_routes/>
+        <Drawer.Navigator initialRouteName="Home" useLegacyImplementation={true}  screenOptions={{drawerPosition: 'right', headerShown: false}} >
+            <Drawer.Screen name="Home" component={StackNavigation}/>
+        </Drawer.Navigator>
     </NavigationContainer>
   );
 };
