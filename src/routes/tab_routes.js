@@ -1,8 +1,8 @@
 import * as React from "react";
-import {StatusBar, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {CommonActions, useNavigation} from '@react-navigation/native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 
 import New from "../pages/new";
@@ -26,37 +26,37 @@ import CaririTur from "../../assets/components/CaririTur.svg";
 import Menu from "../../assets/components/Menu.svg";
 import Vector from "../../assets/components/left_arrow.svg";
 
-function Header({type, name}) {
+function Header({ type, name }) {
 
     const navigation = useNavigation();
 
     if (type === 'back') {
         return <>
             <>
-                <StatusBar/>
+                <StatusBar />
                 <View style={styles.header}>
                     <View style={styles.header_container}>
                         <TouchableOpacity onPress={() => {
                             navigation.goBack()
                         }
                         }>
-                            <Vector/>
+                            <Vector />
                         </TouchableOpacity>
-                        <Text style={{color: "#190152", fontSize: 18, paddingLeft: 25}}>{name}</Text>
+                        <Text style={{ color: "#027DC1", fontSize: 23, paddingLeft: 15, width: '120%', height: 'auto' }}>{name}</Text>
                     </View>
                     <TouchableOpacity>
-                        <Menu/>
+                        <Menu />
                     </TouchableOpacity>
                 </View>
             </>
         </>
     } else {
         return <>
-            <StatusBar/>
+            <StatusBar />
             <View style={styles.header}>
-                <CaririTur/>
+                <CaririTur />
                 <TouchableOpacity>
-                    <Menu/>
+                    <Menu />
                 </TouchableOpacity>
             </View>
         </>
@@ -87,50 +87,50 @@ export default function TabRoutes() {
                 screenOptions={{
                     tabBarShowLabel: false,
                     tabBarStyle: {
-                    borderTopWidth: 0,
+                        borderTopWidth: 0,
                     },
                 }}
             >
                 <Tab.Screen name="Home" component={Home} options={{
-                    headerTitle: () => <Header/>,
-                    tabBarIcon: ({focused}) => {
+                    headerTitle: () => <Header />,
+                    tabBarIcon: ({ focused }) => {
                         return (
-                            focused ? <HomeFillIcon/> : <HomeIcon/>
+                            focused ? <HomeFillIcon /> : <HomeIcon />
                         )
                     }
-                }}/>
+                }} />
                 <Tab.Screen name="Routes" component={Rotas} options={{
-                    headerTitle: () => <Header type={'back'} name={"Rotas"}/>,
-                    tabBarIcon: ({focused}) => {
+                    headerTitle: () => <Header type={'back'} name={"Rotas"} />,
+                    tabBarIcon: ({ focused }) => {
                         return (
-                            focused ? <RoutesFillIcon/> : <RoutesIcon/>
+                            focused ? <RoutesFillIcon /> : <RoutesIcon />
                         )
                     }
-                }}/>
-             <Tab.Screen name="Novo" component={New} options={{
-                    headerTitle: () => <Header type={'back'} name={"New"}/>,
-                    tabBarIcon: ({focused}) => {
+                }} />
+                <Tab.Screen name="Novo" component={New} options={{
+                    headerTitle: () => <Header type={'back'} name={"New"} />,
+                    tabBarIcon: ({ focused }) => {
                         return (
-                            focused ? <CircleFillIcon/> : <AddcircleIcon/>
+                            focused ? <CircleFillIcon /> : <AddcircleIcon />
                         )
                     }
-                }}/>
-            <Tab.Screen name="Eventos" component={Eventos} options={{
-                    headerTitle: () => <Header type={'back'} name={"Eventos"}/>,
-                    tabBarIcon: ({focused}) => {
+                }} />
+                <Tab.Screen name="Eventos" component={Eventos} options={{
+                    headerTitle: () => <Header type={'back'} name={"Eventos"} />,
+                    tabBarIcon: ({ focused }) => {
                         return (
-                            focused ? <EventosFillIcon/> : <EventosIcon/>
+                            focused ? <EventosFillIcon /> : <EventosIcon />
                         )
                     }
-                }}/>
-           <Tab.Screen name="Profile" component={Profile} options={{
-                    headerTitle: () => <Header type={'back'} name={"Profile"}/>,
-                    tabBarIcon: ({focused}) => {
+                }} />
+                <Tab.Screen name="Profile" component={Profile} options={{
+                    headerTitle: () => <Header type={'back'} name={"Profile"} />,
+                    tabBarIcon: ({ focused }) => {
                         return (
-                            focused ? <UserFillIcon/> : <UserIcon/>
+                            focused ? <UserFillIcon /> : <UserIcon />
                         )
                     }
-                }}/>
+                }} />
             </Tab.Navigator>
         </>
     );

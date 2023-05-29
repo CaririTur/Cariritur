@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
     },
     boxEventos: {
         height: 150,
-        marginTop: 20,
-        marginBottom: 20,
+        marginBottom: 10,
 
     },
     cardEvento: {
