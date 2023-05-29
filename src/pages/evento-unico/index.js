@@ -4,7 +4,7 @@ export default function EventosUnicos(){
     return(
         <View style={styles.containerPrincipal}>
             <Text> 
-                teste
+                AGORA VAI !!!!!!!!!!!!!!!😢😢
             </Text>
         </View>
     )

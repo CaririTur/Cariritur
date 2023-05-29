@@ -3,6 +3,9 @@ import eventos from "../../mock/eventos";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Eventos(){
+
+    const navigator = useNavigation();
+    
     return<>
         <View>
             <View style={{ marginBottom: 10 }}/>
@@ -12,7 +15,7 @@ export default function Eventos(){
                 renderItem={({ item }) => <>
                     <Text style={style.date}> {item.data}</Text>
                     <View style={style.container}>
-                        <TouchableOpacity style={style.container_filho}>
+                        <TouchableOpacity style={style.container_filho} onPress={() => {navigator.navigate('EventosUnicos')}}>
                             <Text style={style.text}>{item.evento}</Text>
                             <Text style={style.text_description}>{item.description}</Text>
                             <Image source={item.photo} style={{marginTop:10, height:139 ,width:337, marginLeft:10}}/>
