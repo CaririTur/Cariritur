@@ -1,6 +1,5 @@
 import * as React from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import New from "../pages/new";

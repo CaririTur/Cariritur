@@ -22,14 +22,14 @@ const pontosTuristicos = [
     {
         "nome": "Pedra do Chapéu",
         "foto": PedraChapeu,
-        "descricao": "A “Pedra do Chapéu” em Milagres-CE é um dos monumentos naturais mais bonitos da região do Cariri cearense ela é uma pedra grande, seu formado de um lado de fato parece um chapéu Ver mais..."
+        "descricao": "A “Pedra do Chapéu” em Milagres-CE é um dos monumentos naturais mais bonitos da região do Cariri cearense ela é uma pedra grande, seu formado de um lado de fato parece um chapéu. Ver mais..."
     },
 
     {
         "nome": "GeoPark Araripe",
         "foto": Geopark,
-        "descricao": "O Geopark Araripe é a maior referência turística-ambiental do Cariri e um potencializador do desenvolvimento regional. Além.  Ver Mais...",
-        "link":"ver mais..."
+        "descricao": "O Geopark Araripe é a maior referência turística-ambiental do Cariri e um potencializador do desenvolvimento regional. Ver Mais...",
+        
     }
     
 ]

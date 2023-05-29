@@ -8,7 +8,7 @@ export default function Homepage({navigation}) {
             data={pontos}
             showsVerticalScrollIndicator={false}
             keyExtractor={dados => dados.nome}
-            renderItem={({item}) => (
+            renderItem={({item}) => <>
                 <View style={{paddingBottom: 20}}>
                     <Text style={styles.nomePontosTuristicos}>{item.nome}</Text>
                     <TouchableOpacity style={styles.cardsPontosTuristicos}>
@@ -16,18 +16,20 @@ export default function Homepage({navigation}) {
                         <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
                     </TouchableOpacity>
                 </View>
-            )}
+            </>}
             ListHeaderComponent={
+                
                 <View style={styles.boxEventos}>
+                    <Text style={styles.textoPontosTuristicos}>Eventos</Text>
                     <FlatList
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={dados => dados.evento}
                         data={dados}
                         renderItem={({item}) => (
-                            <View style={{marginBottom: 20}}>
-                                <TouchableOpacity style={styles.cardEvento}
-                                                  onPress={() => navigation.navigate("Eventos")}>
+                            <View>
+                                <TouchableOpacity onPress={() => navigation.navigate("Eventos")} style={{alignItems:"center"}}>
+                                    <Image source={item.photo} style={styles.cardEvento}/>
                                     <Text style={styles.cardTextoEvento}>{item.evento}</Text>
                                 </TouchableOpacity>
                             </View>
@@ -66,10 +68,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     boxEventos: {
-        height: 150,
+        height: 220,
         marginTop: 20,
         marginBottom: 20,
-
+        marginLeft: 5,
     },
     cardEvento: {
         backgroundColor: '#CDCDCD',
@@ -78,12 +80,10 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 15,
         padding: 10,
-        //Sombreado dos cards
-        elevation: 15
     },
     cardTextoEvento: {
         color: "black",
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 500,
     },
     cardDataEvento: {
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     cardsPontosTuristicos: {
         width: 365,
         height: 250,
-        marginBottom: 30,
+        marginBottom: 10,
         marginLeft: 15,
         backgroundColor: "#FFFFFF",
         borderRadius: 6,
@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginBottom: 5,
         fontSize: 18,
+        fontWeight:"bold"
     },
     descricaoPontosTuristicos: {
-        alignItems: 'center',
-        marginTop: 10,
+        marginTop: 20,
         marginLeft: 10,
         marginRight: 10,
         fontSize: 15,
-        fontWeight: 'bold',
+        fontWeight: '400',
         paddingLeft: 6,
         paddingRight: 6,
     },
