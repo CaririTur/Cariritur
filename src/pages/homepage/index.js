@@ -3,22 +3,20 @@ import dados from "../../mock/eventos"
 import pontos from "../../mock/pontosTuristicos"
 
 export default function Homepage({navigation}) {
-    return <>
-        <FlatList
+    return <FlatList
             data={pontos}
             showsVerticalScrollIndicator={false}
             keyExtractor={dados => dados.nome}
-            renderItem={({item}) => <>
-                <View style={{paddingBottom: 20}}>
+            renderItem={({item}) =>
+                <View style={{ alignItems: "center" }} >
                     <Text style={styles.nomePontosTuristicos}>{item.nome}</Text>
                     <TouchableOpacity style={styles.cardsPontosTuristicos}>
-                        <Image source={item.foto}/>
+                        <Image style={{ width: '100%' }} source={item.foto}/>
                         <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
                     </TouchableOpacity>
-                </View>
-            </>}
+                </View>}
             ListHeaderComponent={
-                
+
                 <View style={styles.boxEventos}>
                     <Text style={styles.textoPontosTuristicos}>Eventos</Text>
                     <FlatList
@@ -27,12 +25,10 @@ export default function Homepage({navigation}) {
                         keyExtractor={dados => dados.evento}
                         data={dados}
                         renderItem={({item}) => (
-                            <View>
                                 <TouchableOpacity onPress={() => navigation.navigate("Eventos")} style={{alignItems:"center"}}>
                                     <Image source={item.photo} style={styles.cardEvento}/>
                                     <Text style={styles.cardTextoEvento}>{item.evento}</Text>
                                 </TouchableOpacity>
-                            </View>
                         )
                         }
                     />
@@ -40,7 +36,6 @@ export default function Homepage({navigation}) {
                 </View>
             }
         />
-    </>
 
 }
 const styles = StyleSheet.create({
@@ -94,14 +89,13 @@ const styles = StyleSheet.create({
     },
     textoPontosTuristicos: {
         marginLeft: 15,
-        fontSize: 25,
+        fontSize: 22,
         fontWeight: '500',
     },
     cardsPontosTuristicos: {
-        width: 365,
+        width: '90%',
         height: 250,
         marginBottom: 10,
-        marginLeft: 15,
         backgroundColor: "#FFFFFF",
         borderRadius: 6,
         elevation: 5,
@@ -114,14 +108,14 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginBottom: 5,
         fontSize: 18,
-        fontWeight:"bold"
+        fontWeight: "500"
     },
     descricaoPontosTuristicos: {
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
-        fontSize: 15,
-        fontWeight: '400',
+        fontSize: 16,
+        textAlign: 'justify',
         paddingLeft: 6,
         paddingRight: 6,
     },

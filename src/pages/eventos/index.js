@@ -1,47 +1,47 @@
-import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image } from "react-native";
+import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import eventos from "../../mock/eventos";
-import { useNavigation } from "@react-navigation/native";
 
-export default function Eventos(){
-    return<>
-        <View>
-            <View style={{ marginBottom: 10 }}/>
-            <FlatList
-                keyExtractor={eventos => eventos.evento}
-                data={eventos}
-                renderItem={({ item }) => <>
-                    <Text style={style.date}> {item.data}</Text>
-                    <View style={style.container}>
-                        <TouchableOpacity style={style.container_filho}>
-                            <Text style={style.text}>{item.evento}</Text>
-                            <Text style={style.text_description}>{item.description}</Text>
-                            <Image source={item.photo} style={{marginTop:10, height:139 ,width:337, marginLeft:10}}/>
-                        </TouchableOpacity>
-                    </View>
-                </>
-                }/>
-        </View>
-    </>
+export default function Eventos() {
+    return <View>
+        <FlatList
+            keyExtractor={eventos => eventos.evento}
+            data={eventos}
+            renderItem={({item}) => <>
+                <Text style={style.date}> {item.data}</Text>
+                <View style={style.container}>
+                    <TouchableOpacity style={style.container_filho}>
+                        <Text style={style.text}>{item.evento}</Text>
+                        <Text style={style.text_description}>{item.description}</Text>
+                        <Image source={item.photo} style={{height: "55%", width: '100%'}}/>
+                    </TouchableOpacity>
+                </View>
+            </>
+            }/>
+    </View>
 }
 
 const style = StyleSheet.create({
 
     container: {
         flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
 
-    container_filho:{
-        width:357,
-        height:233,
-        marginLeft:18,
-        marginBottom:18,
-        marginRight:18,
-        borderRadius:10,
-        elevation:10,
+    container_filho: {
+        justifyContent: 'space-between',
+        width: '90%',
+        height: 230,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        borderRadius: 10,
+        elevation: 10,
         shadowColor: '#030002',
         shadowOpacity: 0.25,
-        shadowRadius: 5 ,
-        backgroundColor:"#ffffff",
+        shadowRadius: 5,
+        backgroundColor: "#ffffff",
     },
 
     date: {
@@ -53,17 +53,12 @@ const style = StyleSheet.create({
 
     text: {
         fontSize: 18,
-        marginLeft: 10,
-        marginTop: 10,
         fontWeight: "bold"
     },
 
 
     text_description: {
         fontSize: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 10,
     },
 
 });
