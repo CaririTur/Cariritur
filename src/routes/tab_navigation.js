@@ -67,7 +67,7 @@ export default function TabRoutes() {
                     }
                 }}/>
                 <Tab.Screen name="Novo" component={New} options={{
-                    headerTitle: () => <Header name="Nova Rota"/>,
+                    headerTitle: () => <Header name="Novo Evento"/>,
                     tabBarIcon: ({focused}) => {
                         return (
                             focused ? <CircleFillIcon/> : <AddCircleIcon/>
