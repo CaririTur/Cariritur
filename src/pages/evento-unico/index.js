@@ -51,7 +51,7 @@ export default function EventosUnicos({ route }) {
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{item_localiza}</Text>
                     </View>
 
-                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 30 }}>
+                    <View style={{ justifyContent: 'center' , alignItems: 'center', marginTop: 30 }}>
                         <Text style={{ textAlign: 'left', margin: 10, fontSize: 18, marginBottom: '25%', textAlign: 'justify' }}>{descricao}</Text>
                     </View>
                 </View>
