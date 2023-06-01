@@ -32,8 +32,8 @@ export default function EventosUnicos({ route }) {
 
             <View style={styles.containerPrincipal}>
 
-                <View style={{flex: 1}}>
-                    <Image style={{ height: '60%', borderRadius: 8 }} source={foto} />
+                <View>
+                    <Image style={{ height: '30%', borderRadius: 8, width: 350, marginLeft: 'auto', marginRight: 'auto' }} source={foto} />
                     <Text style={{ marginTop: '2%', marginLeft: '2%', fontSize: 23 }}>{evento}</Text>
 
                     <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '8%' }}>
@@ -41,19 +41,19 @@ export default function EventosUnicos({ route }) {
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{data}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '3%'}}>
+                    <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '3%' }}>
                         <GrupoPessoas />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{pessoa}</Text>
                     </View>
-                    
+
                     <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '3%' }}>
                         <Localizacao />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{item_localiza}</Text>
                     </View>
-                </View>
 
-                <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style={{textAlign: 'left', margin: 10, fontSize: 18, marginBottom: '25%'}}>{descricao}</Text>
+                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 30 }}>
+                        <Text style={{ textAlign: 'left', margin: 10, fontSize: 18, marginBottom: '25%', textAlign: 'justify' }}>{descricao}</Text>
+                    </View>
                 </View>
             </View>
         </>
