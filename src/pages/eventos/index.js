@@ -1,7 +1,11 @@
 import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import eventos from "../../mock/eventos";
+import {useNavigation} from "@react-navigation/native";
 
 export default function Eventos() {
+
+    const navigation = useNavigation()
+
     return <View>
         <FlatList
             keyExtractor={eventos => eventos.evento}
@@ -9,7 +13,7 @@ export default function Eventos() {
             renderItem={({item}) => <>
                 <Text style={style.date}> {item.data}</Text>
                 <View style={style.container}>
-                    <TouchableOpacity style={style.container_filho} onPress={() => { navigator.navigate('EventosUnicos', { foto: item.photo, descricao: item.description, evento: item.evento, data: item.data, item_localiza: item.localizacao, pessoa: item.pessoas }) }}>
+                    <TouchableOpacity style={style.container_filho} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.photo, descricao: item.description, evento: item.evento, data: item.data, item_localiza: item.localizacao, pessoa: item.pessoas }) }}>
                         <Text style={style.text}>{item.evento}</Text>
                         <Text style={style.text_description}>{item.description}</Text>
                         <Image source={item.photo} style={{height: "55%", width: '100%'}}/>

@@ -3,6 +3,9 @@ import dados from "../../mock/eventos"
 import pontos from "../../mock/pontosTuristicos"
 
 export default function Homepage({navigation}) {
+
+
+
     return <FlatList
             data={pontos}
             showsVerticalScrollIndicator={false}
@@ -10,6 +13,7 @@ export default function Homepage({navigation}) {
             renderItem={({item}) =>
                 <View style={{ alignItems: "center" }} >
                     <Text style={styles.nomePontosTuristicos}>{item.nome}</Text>
+                    {/*// descricao, evento, foto, data, item_localiza, pessoa*/}
                     <TouchableOpacity style={styles.cardsPontosTuristicos}>
                         <Image style={{ width: '100%' }} source={item.foto}/>
                         <Text style={styles.descricaoPontosTuristicos}>{item.descricao}</Text>
@@ -25,7 +29,7 @@ export default function Homepage({navigation}) {
                         keyExtractor={dados => dados.evento}
                         data={dados}
                         renderItem={({item}) => (
-                                <TouchableOpacity onPress={() => navigation.navigate("Eventos")} style={{alignItems:"center"}}>
+                                <TouchableOpacity style={{ alignItems: "center" }} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.photo, descricao: item.description, evento: item.evento, data: item.data, item_localiza: item.localizacao, pessoa: item.pessoas }) }}>
                                     <Image source={item.photo} style={styles.cardEvento}/>
                                     <Text style={styles.cardTextoEvento}>{item.evento}</Text>
                                 </TouchableOpacity>
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     },
     cardEvento: {
         backgroundColor: '#CDCDCD',
-        margin: 10,
+        margin: 5,
         height: 100,
         width: 150,
         borderRadius: 15,
@@ -94,14 +98,15 @@ const styles = StyleSheet.create({
     },
     cardsPontosTuristicos: {
         width: '90%',
-        height: 250,
+        height: 'auto',
         marginBottom: 10,
         backgroundColor: "#FFFFFF",
         borderRadius: 6,
         elevation: 5,
         shadowColor: '#030002',
         shadowOpacity: 0.25,
-        shadowRadius: 5
+        shadowRadius: 5,
+        paddingBottom: 10
     },
     nomePontosTuristicos: {
         marginRight: 'auto',

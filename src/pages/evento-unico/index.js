@@ -52,7 +52,7 @@ export default function EventosUnicos({ route }) {
                     </View>
 
                     <View style={{ justifyContent: 'center' , alignItems: 'center', marginTop: 30 }}>
-                        <Text style={{ textAlign: 'left', margin: 10, fontSize: 18, marginBottom: '25%', textAlign: 'justify' }}>{descricao}</Text>
+                        <Text style={{ margin: 10, fontSize: 18, marginBottom: '25%', textAlign: 'justify' }}>{descricao}</Text>
                     </View>
                 </View>
             </View>
