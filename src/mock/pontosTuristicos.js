@@ -3,10 +3,6 @@ import Museu from "../../assets/Turisticos/Museu.png"
 import PedraChapeu from "../../assets/Turisticos/PedraChapeu.png"
 import Geopark from "../../assets/Turisticos/Geopark.png"
 
-
-
-
-
 const pontosTuristicos = [
     {
         "nome": "Padre Cícero",

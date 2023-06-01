@@ -2,6 +2,12 @@ import * as React from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
+
 import New from "../pages/new";
 import Profile from "../pages/profile";
 import Rotas from "../pages/rotas";
@@ -54,15 +60,15 @@ export default function TabRoutes() {
                     headerTitle: () => <Header name="Home"/>,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused ? <HomeFillIcon/> : <HomeIcon/>
+                            focused ? <HomeFillIcon /> : <HomeIcon />
                         )
                     }
-                }}/>
+                }} />
                 <Tab.Screen name="Routes" component={Rotas} options={{
                     headerTitle: () => <Header name="Rotas"/>,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused ? <RoutesFillIcon/> : <RoutesIcon/>
+                            focused ? <RoutesFillIcon /> : <RoutesIcon />
                         )
                     }
                 }}/>
@@ -78,7 +84,7 @@ export default function TabRoutes() {
                     headerTitle: () => <Header name="Eventos"/>,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused ? <EventosFillIcon/> : <EventosIcon/>
+                            focused ? <EventosFillIcon /> : <EventosIcon />
                         )
                     }
                 }}/>
@@ -86,7 +92,7 @@ export default function TabRoutes() {
                     headerTitle: () => <Header name="Perfil"/>,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused ? <UserFillIcon/> : <UserIcon/>
+                            focused ? <UserFillIcon /> : <UserIcon />
                         )
                     }
                 }}/>
