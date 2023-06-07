@@ -4,8 +4,6 @@ import pontos from "../../mock/pontosTuristicos"
 
 export default function Homepage({navigation}) {
 
-
-
     return <FlatList
             data={pontos}
             showsVerticalScrollIndicator={false}

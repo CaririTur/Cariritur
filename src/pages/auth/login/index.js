@@ -1,14 +1,18 @@
 import {LinearGradient} from 'expo-linear-gradient';
 import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
-import Google from "../../../assets/google.png";
-import Ios from "../../../assets/ios.png";
-import Facebook from "../../../assets/facebook.png";
+import Google from "../../../../assets/google.png";
+import Ios from "../../../../assets/ios.png";
+import Facebook from "../../../../assets/facebook.png";
 
 import {StatusBar} from 'expo-status-bar';
-import Logo from '../../../assets/logo.png';
-import {useEffect} from "react";
-
+import Logo from '../../../../assets/logo.png';
+import {useContext, useEffect, useState} from "react";
 export function Login({navigation}) {
+    const { AuthContext } = require("../../../routes/login_routes");
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const { signIn } = useContext(AuthContext);
+
     return <>
         <LinearGradient
             style={{
@@ -34,16 +38,20 @@ export function Login({navigation}) {
             </View>
 
             <View style={styles.container_input}>
-                <TextInput placeholder="E-mail" placeholderTextColor="#190152" style={styles.text_input}/>
+                <TextInput placeholder="E-mail" value={email} onChangeText={setEmail} placeholderTextColor="#190152"
+                           style={styles.text_input}/>
             </View>
 
             <View style={styles.container_input}>
-                <TextInput placeholder="Senha" placeholderTextColor="#190152" style={styles.text_input}
+                <TextInput placeholder="Senha" value={password} onChangeText={setPassword}
+                           placeholderTextColor="#190152" style={styles.text_input}
                            secureTextEntry={true}/>
             </View>
 
             <View>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("TabHome")}>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                    signIn({email, password})
+                }}>
                     <Text style={styles.text_button}>Entrar</Text>
                 </TouchableOpacity>
             </View>
@@ -69,33 +77,9 @@ export function Login({navigation}) {
     </>
 }
 
-export default function StartPage({navigation}) {
-    useEffect(() => {
-        const time = setTimeout(() => {
-            navigation.navigate("Login")
-        }, 2000);
 
-        return () => clearTimeout(time)
-    }, []);
-
-    return (
-        <TouchableOpacity style={styles.container_page}>
-            <Image source={Logo}/>
-            <StatusBar style="auto"/>
-            <Text style={{fontWeight: 'bold',}}>Por Grupo Genisys</Text>
-        </TouchableOpacity>
-
-
-    )
-}
 
 const styles = StyleSheet.create({
-    container_page: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     container: {
         height: '100%',
         display: 'flex',

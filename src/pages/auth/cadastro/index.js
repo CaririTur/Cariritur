@@ -1,8 +1,8 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View,Image} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import Google from "../../../assets/google.png";
-import Ios from "../../../assets/ios.png";
-import Facebook from "../../../assets/facebook.png";
+import Google from "../../../../assets/google.png";
+import Ios from "../../../../assets/ios.png";
+import Facebook from "../../../../assets/facebook.png";
 
 
 export default function Cadastro({navigation}) {
