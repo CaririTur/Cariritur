@@ -1,9 +1,6 @@
 import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import TabRoutes from "./tab_navigation";
-
-import StartPage, {Login} from "../pages/auth/login";
-import Cadastro from "../pages/auth/cadastro";
 import Eventos from "../pages/eventos";
 import EventosUnicos from "../pages/evento-unico";
 import Profile from "../pages/profile";
@@ -15,7 +12,7 @@ export default function StackNavigation() {
     return (
         <Stack.Navigator initialRouteName="TabRoutes" screenOptions={{headerShown: false}}>
             <Stack.Screen
-                name="TabHome"
+                name="TabRoutes"
                 component={TabRoutes}
             />
             <Stack.Screen

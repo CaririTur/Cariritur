@@ -44,6 +44,7 @@ export function LoginStackNavigator() {
                     .then((response) => {
                         AsyncStorage.setItem("token", response.data.token);
                         setToken(response.data.token)
+                        console.log(response.data.token)
                     })
                     .catch((error) => {
                         if (error.response && error.response.status === 401) {

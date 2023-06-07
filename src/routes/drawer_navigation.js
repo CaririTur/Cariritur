@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Alert, Text, TouchableOpacity} from "react-native";
 import Logo from "../../assets/logo.svg"
-import TabRoutes from "./tab_navigation";
+import StackNavigation from "./stack_navigation";
 
 const Drawer = createDrawerNavigator();
 
@@ -22,11 +22,11 @@ export default function DrawerNavigation() {
 
     return (
         <Drawer.Navigator
-            initialRouteName="TabNavigation"
+            initialRouteName="StackNavigation"
             useLegacyImplementation={true}
             screenOptions={{drawerPosition: 'right', headerShown: false}}
         >
-            <Drawer.Screen name="TabNavigation" component={TabRoutes} options={{
+            <Drawer.Screen name="StackNavigation" component={StackNavigation} options={{
                 drawerLabel: () => null,
                 drawerIcon: () => <Logo width={'100%'} height={40}/>
             }}/>
