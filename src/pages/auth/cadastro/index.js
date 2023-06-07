@@ -18,9 +18,10 @@ export default function Cadastro() {
 
     const verificarSenha = () => {
         if (senha === confirmarSenha) {
-            api.post('/user', {name: nome, email: email, password: senha}).then(
-                signIn({email, senha}),
-            ).catch((error) => {
+            api.post('/user', {name: nome, email: email, password: senha}).then(() => {
+                    Alert.alert("Sucesso", "Conta criada com sucesso!")
+                    signIn({email: email, password: senha})
+                }).catch((error) => {
                 if (error.response && error.response.status === 409) {
                     Alert.alert("Erro", "Este Email já existe");
                 } else {

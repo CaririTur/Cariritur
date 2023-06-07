@@ -21,7 +21,6 @@ export function LoginStackNavigator() {
     useEffect(() => {
         const getTokenData = async () => {
             try {
-                // Simulando o carregamento assíncrono
                 setTimeout(async () => {
                     const storedToken = await AsyncStorage.getItem("token");
                     setToken(storedToken);
@@ -44,7 +43,6 @@ export function LoginStackNavigator() {
                     .then((response) => {
                         AsyncStorage.setItem("token", response.data.token);
                         setToken(response.data.token)
-                        console.log(response.data.token)
                     })
                     .catch((error) => {
                         if (error.response && error.response.status === 401) {

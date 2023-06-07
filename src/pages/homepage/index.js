@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Alert, FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { getPlaces } from "../../services/requests/users";
 
 export default function Homepage({ navigation }) {
     const { AuthContext } = require("../../routes/login_routes")
-    const { token } = useContext(AuthContext)
+    const { token, logOut } = useContext(AuthContext)
     const [eventPlaces, seteventPlaces] = useState([])
     const [otherPlaces, setotherPlaces] = useState([])
 
@@ -22,6 +22,11 @@ export default function Homepage({ navigation }) {
             });
             seteventPlaces(eventPlaces)
             setotherPlaces(otherPlaces)
+        }).catch((error) => {
+            if(error.response && error.response === 401){
+                Alert.alert("Error", "Faça login novamente")
+                logOut()
+            }
         })
     }, [])
 
