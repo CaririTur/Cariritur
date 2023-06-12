@@ -35,8 +35,8 @@ export default function DrawerNavigation() {
                 component={EmptyComp}
                 options={{
                     title: 'Sair',
-                    drawerLabel: ({focused}) => (
-                        <TouchableOpacity onPress={confirmLogout}>
+                    drawerIcon: ({focused}) => (
+                        <TouchableOpacity onPress={confirmLogout} style={{ width: '100%', height: '100%' }}>
                             <Text style={{color: focused ? 'blue' : 'black'}}>Sair</Text>
                         </TouchableOpacity>
                     ),

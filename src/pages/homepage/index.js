@@ -39,7 +39,7 @@ export default function Homepage({ navigation }) {
                 renderItem={({ item }) =>
                     <View style={{ alignItems: "center" }}>
                         <Text style={styles.nomePontosTuristicos}>{item.name}</Text>
-                        <TouchableOpacity style={styles.cardsPontosTuristicos}>
+                        <TouchableOpacity style={styles.cardsPontosTuristicos} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.images[0], descricao: item.description, evento: item.name, data: item.open_hour, item_localiza: item.street, pessoa: "18000" })}}>
                             <Image style={{ width: '100%', height: 150 }} source={{ uri: item.images[0] }} />
                             <Text style={styles.descricaoPontosTuristicos}>{item.description.length > 200 ? item.description.substring(0, 200) + "... veja mais." : item.description}</Text>
                         </TouchableOpacity>

@@ -61,14 +61,14 @@ export default function TabRoutes() {
                         )
                     }
                 }}/>
-                <Tab.Screen name="Routes" component={Rotas} options={{
-                    headerTitle: () => <Header name="Rotas"/>,
-                    tabBarIcon: ({focused}) => {
-                        return (
-                            focused ? <RoutesFillIcon/> : <RoutesIcon/>
-                        )
-                    }
-                }}/>
+                {/*<Tab.Screen name="Routes" component={Rotas} options={{*/}
+                {/*    headerTitle: () => <Header name="Rotas"/>,*/}
+                {/*    tabBarIcon: ({focused}) => {*/}
+                {/*        return (*/}
+                {/*            focused ? <RoutesFillIcon/> : <RoutesIcon/>*/}
+                {/*        )*/}
+                {/*    }*/}
+                {/*}}/>*/}
                 {/*<Tab.Screen name="Novo" component={New} options={{*/}
                 {/*    headerTitle: () => <Header name="Novo Evento"/>,*/}
                 {/*    tabBarIcon: ({focused}) => {*/}
