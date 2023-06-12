@@ -33,7 +33,7 @@ export default function EventosUnicos({ route }) {
             <View style={styles.containerPrincipal}>
 
                 <View>
-                    <Image style={{ height: '30%', borderRadius: 8, width: 350, marginLeft: 'auto', marginRight: 'auto' }} source={foto} />
+                    <Image style={{ height: '30%', borderRadius: 8, width: 350, marginLeft: 'auto', marginRight: 'auto' }} source={{ uri: foto }} />
                     <Text style={{ marginTop: '2%', marginLeft: '2%', fontSize: 23 }}>{evento}</Text>
 
                     <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '8%' }}>

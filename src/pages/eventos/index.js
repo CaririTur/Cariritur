@@ -1,35 +1,61 @@
-import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import eventos from "../../mock/eventos";
-import {useNavigation} from "@react-navigation/native";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import {useContext, useEffect, useState} from "react";
+import { getPlaces } from "../../services/requests/users";
 
 export default function Eventos() {
+    const { AuthContext } = require("../../routes/login_routes")
+    const { token } = useContext(AuthContext)
 
-    const navigation = useNavigation()
+    const [eventPlaces, setEventPlaces] = useState([]);
+    const navigation = useNavigation();
 
-    return <View>
-        <FlatList
-            keyExtractor={eventos => eventos.evento}
-            data={eventos}
-            renderItem={({item}) => <>
-                <Text style={style.date}> {item.data}</Text>
-                <View style={style.container}>
-                    <TouchableOpacity style={style.container_filho} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.photo, descricao: item.description, evento: item.evento, data: item.data, item_localiza: item.localizacao, pessoa: item.pessoas }) }}>
-                        <Text style={style.text}>{item.evento}</Text>
-                        <Text style={style.text_description}>{item.description}</Text>
-                        <Image source={item.photo} style={{height: "55%", width: '100%'}}/>
-                    </TouchableOpacity>
-                </View>
-            </>
-            }/>
-    </View>
+    useEffect(() => {
+        getPlaces(token).then((response) => {
+            const eventPlaces = response.places.filter((place) => place.category === "EVENT");
+            setEventPlaces(eventPlaces);
+        });
+    }, []);
+
+    return (
+        <View>
+            <FlatList
+                keyExtractor={(item) => item.id}
+                data={eventPlaces}
+                renderItem={({ item }) => (
+                    <>
+                        <Text style={styles.date}>{item.curiosities}</Text>
+                        <View style={styles.container}>
+                            <TouchableOpacity
+                                style={styles.container_filho}
+                                onPress={() => {
+                                    navigation.navigate('EventosUnicos', {
+                                        foto: item.images[0],
+                                        descricao: item.description,
+                                        evento: item.name,
+                                        data: item.open_hour,
+                                        item_localiza: item.street,
+                                        pessoa: "15800",
+                                    });
+                                }}
+                            >
+                                <Text style={styles.text}>{item.name}</Text>
+                                <Text style={styles.text_description}>{item.description.length > 150 ? item.description.substring(0, 150) + "... veja mais." : item.description}</Text>
+                                <Image source={{ uri: item.images[0] }} style={{ height: "55%", width: '100%' }} />
+                            </TouchableOpacity>
+                        </View>
+                    </>
+                )}
+            />
+        </View>
+    );
 }
 
-const style = StyleSheet.create({
-
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
 
     container_filho: {
@@ -52,17 +78,16 @@ const style = StyleSheet.create({
         fontSize: 18,
         marginLeft: 18,
         marginBottom: 10,
-        marginTop: 10
+        marginTop: 10,
     },
 
     text: {
         fontSize: 18,
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
 
 
     text_description: {
         fontSize: 15,
     },
-
 });
