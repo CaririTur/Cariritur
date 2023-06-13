@@ -1,69 +1,106 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Alert, FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Alert, FlatList, Image, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { getPlaces } from "../../services/requests/users";
 
 export default function Homepage({ navigation }) {
-    const { AuthContext } = require("../../routes/login_routes")
-    const { token, logOut } = useContext(AuthContext)
-    const [eventPlaces, seteventPlaces] = useState([])
-    const [otherPlaces, setotherPlaces] = useState([])
+    const { AuthContext } = require("../../routes/login_routes");
+    const { token, logOut } = useContext(AuthContext);
+    const [refreshing, setRefreshing] = useState(false);
+    const [eventPlaces, setEventPlaces] = useState([]);
+    const [otherPlaces, setOtherPlaces] = useState([]);
 
-    useEffect(() => {
-        getPlaces(token).then((r) => {
-            let eventPlaces = [];
-            let otherPlaces = [];
+    const onRefresh = () => {
+        setRefreshing(true);
+        getPlaces(token)
+            .then((r) => {
+                let eventPlaces = [];
+                let otherPlaces = [];
 
-            r.places.forEach((place) => {
-                if (place.category === "EVENT") {
-                    eventPlaces.push(place);
-                } else {
-                    otherPlaces.push(place);
+                r.places.forEach((place) => {
+                    if (place.category === "EVENT") {
+                        eventPlaces.push(place);
+                    } else {
+                        otherPlaces.push(place);
+                    }
+                });
+
+                setEventPlaces(eventPlaces);
+                setOtherPlaces(otherPlaces);
+                setRefreshing(false);
+            })
+            .catch((error) => {
+                setRefreshing(false);
+                if (error.response && error.response.status === 401) {
+                    Alert.alert("Error", "Faça login novamente");
+                    logOut();
                 }
             });
-            seteventPlaces(eventPlaces)
-            setotherPlaces(otherPlaces)
-        }).catch((error) => {
-            if(error.response && error.response === 401){
-                Alert.alert("Error", "Faça login novamente")
-                logOut()
-            }
-        })
-    }, [])
+    };
+
+    useEffect(() => {
+        onRefresh();
+    }, []);
 
     return (
         <View style={styles.container}>
             <FlatList
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 data={otherPlaces}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={dados => dados.id}
-                renderItem={({ item }) =>
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
                     <View style={{ alignItems: "center" }}>
                         <Text style={styles.nomePontosTuristicos}>{item.name}</Text>
-                        <TouchableOpacity style={styles.cardsPontosTuristicos} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.images[0], descricao: item.description, evento: item.name, data: item.open_hour, item_localiza: item.street, pessoa: "18000" })}}>
+                        <TouchableOpacity
+                            style={styles.cardsPontosTuristicos}
+                            onPress={() =>
+                                navigation.navigate('EventosUnicos', {
+                                    foto: item.images[0],
+                                    descricao: item.description,
+                                    evento: item.name,
+                                    data: item.open_hour,
+                                    item_localiza: item.street,
+                                    pessoa: "18000"
+                                })
+                            }
+                        >
                             <Image style={{ width: '100%', height: 150 }} source={{ uri: item.images[0] }} />
-                            <Text style={styles.descricaoPontosTuristicos}>{item.description.length > 200 ? item.description.substring(0, 200) + "... veja mais." : item.description}</Text>
+                            <Text style={styles.descricaoPontosTuristicos}>
+                                {item.description.length > 200 ? item.description.substring(0, 200) + "... veja mais." : item.description}
+                            </Text>
                         </TouchableOpacity>
                     </View>
-                }
-                ListHeaderComponent={
+                )}
+                ListHeaderComponent={() => (
                     <View style={styles.boxEventos}>
                         <Text style={styles.textoPontosTuristicos}>Eventos</Text>
                         <FlatList
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
-                            keyExtractor={dados => dados.id}
+                            keyExtractor={(item) => item.id.toString()}
                             data={eventPlaces}
-                            renderItem={({item}) => (
-                                <TouchableOpacity style={{ alignItems: "center" }} onPress={() => { navigation.navigate('EventosUnicos', { foto: item.images[0], descricao: item.description, evento: item.name, data: item.open_hour, item_localiza: item.street, pessoa: "18000" }) }}>
-                                    <Image source={{ uri: item.images[0] }} style={styles.cardEvento}/>
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    style={{ alignItems: "center" }}
+                                    onPress={() =>
+                                        navigation.navigate('EventosUnicos', {
+                                            foto: item.images[0],
+                                            descricao: item.description,
+                                            evento: item.name,
+                                            data: item.open_hour,
+                                            item_localiza: item.street,
+                                            pessoa: "18000"
+                                        })
+                                    }
+                                >
+                                    <Image source={{ uri: item.images[0] }} style={styles.cardEvento} />
                                     <Text style={styles.cardTextoEvento}>{item.name}</Text>
                                 </TouchableOpacity>
-                            )
-                            }
+                            )}
                         />
                         <Text style={styles.textoPontosTuristicos}>Pontos Turísticos</Text>
                     </View>
-                }
+                )}
             />
         </View>
     );
@@ -108,9 +145,8 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     cardTextoEvento: {
-        color: "black",
-        fontSize: 18,
-        fontWeight: 500,
+        fontSize: 15,
+        fontWeight: "bold",
     },
     cardDataEvento: {
         marginTop: 'auto',

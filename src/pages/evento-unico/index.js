@@ -34,25 +34,25 @@ export default function EventosUnicos({ route }) {
 
                 <View>
                     <Image style={{ height: '30%', borderRadius: 8, width: 350, marginLeft: 'auto', marginRight: 'auto' }} source={{ uri: foto }} />
-                    <Text style={{ marginTop: '2%', marginLeft: '2%', fontSize: 23 }}>{evento}</Text>
+                    <Text style={{ marginLeft: '10%', marginRight: '10%', fontSize: 23 , marginTop:10}}>{evento}</Text>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '8%' }}>
+                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '8%' }}>
                         <Agendinha />
-                        <Text style={{ fontSize: 20, marginLeft: '2%' }}>{data}</Text>
+                        <Text style={{ fontSize: 20, marginLeft: '2%' }}>10 de Julho</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '3%' }}>
+                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '3%' }}>
                         <GrupoPessoas />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{pessoa}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '2%', marginTop: '3%' }}>
+                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '3%' }}>
                         <Localizacao />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{item_localiza}</Text>
                     </View>
 
                     <View style={{ justifyContent: 'center' , alignItems: 'center', marginTop: 30 }}>
-                        <Text style={{ margin: 10, fontSize: 18, marginBottom: '25%', textAlign: 'justify' }}>{descricao}</Text>
+                        <Text style={{ marginLeft: '10%', marginRight: '10%', fontSize: 18, marginBottom: '25%',}}>{descricao}</Text>
                     </View>
                 </View>
             </View>

@@ -93,7 +93,7 @@ export default function Cadastro() {
                 </View>
                 <View style={styles_jl.term_priv}>
                     <Text style={{ marginLeft: 10, marginRight: 8 }}>
-                        By registering, you are agreeing with our Terms of Use and Privacy Policy
+                        By registering, you are agreeing with our
                     </Text>
                     <TouchableOpacity style={{ marginLeft: 10, marginRight: 8 }}>
                         <Text style={{ color: '#9C3E16' }}>Terms of Use and Privacy Policy</Text>

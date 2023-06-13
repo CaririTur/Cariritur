@@ -2,9 +2,11 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'reac
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PerfilIcon from '../../../assets/Profile/Perfil.svg'
+import {useNavigation} from "@react-navigation/native";
 
 
-export default function Profile(navigation) {
+export default function Profile() {
+    const navigation = useNavigation()
     return (
         <SafeAreaView  style={styles.container}>
             <View>
@@ -27,15 +29,15 @@ export default function Profile(navigation) {
                 <View>
                     <Text style={styles.text}>Alterar Senha:</Text>
                     <TextInput style={styles.password} placeholder="********" placeholderTextColor="#808080" secureTextEntry={true} />
-                
+
                 </View>
 
                 <View>
                     <Text style={styles.text}>Confirme Senha:</Text>
                     <TextInput style={styles.password} placeholder="Confirme sua senha " placeholderTextColor="#808080" secureTextEntry={true} />
-                
+
                 </View>
-                
+
                 <View>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Homepage")}>
                         <Text style={styles.text_button}>Salvar</Text>
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: "center",
-        
+
     },
     perfilIcon: {
         alignItems: "center",

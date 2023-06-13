@@ -1,6 +1,6 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import {useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { getPlaces } from "../../services/requests/users";
 
 export default function Eventos() {
@@ -8,13 +8,23 @@ export default function Eventos() {
     const { token } = useContext(AuthContext)
 
     const [eventPlaces, setEventPlaces] = useState([]);
+    const [refreshing, setRefreshing] = useState(false);
     const navigation = useNavigation();
 
-    useEffect(() => {
+    const onRefresh = () => {
+        setRefreshing(true);
         getPlaces(token).then((response) => {
             const eventPlaces = response.places.filter((place) => place.category === "EVENT");
             setEventPlaces(eventPlaces);
+            setRefreshing(false);
+        }).catch((error) => {
+            console.log(error);
+            setRefreshing(false);
         });
+    };
+
+    useEffect(() => {
+        onRefresh();
     }, []);
 
     return (
@@ -22,10 +32,13 @@ export default function Eventos() {
             <FlatList
                 keyExtractor={(item) => item.id}
                 data={eventPlaces}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }
                 renderItem={({ item }) => (
                     <>
-                        <Text style={styles.date}>{item.curiosities}</Text>
                         <View style={styles.container}>
+                            <Text style={styles.date}>{item.curiosities}</Text>
                             <TouchableOpacity
                                 style={styles.container_filho}
                                 onPress={() => {
@@ -41,7 +54,7 @@ export default function Eventos() {
                             >
                                 <Text style={styles.text}>{item.name}</Text>
                                 <Text style={styles.text_description}>{item.description.length > 150 ? item.description.substring(0, 150) + "... veja mais." : item.description}</Text>
-                                <Image source={{ uri: item.images[0] }} style={{ height: "55%", width: '100%' }} />
+                                <Image source={{ uri: item.images[0] }} style={{ height: "50%", width: '100%' }} />
                             </TouchableOpacity>
                         </View>
                     </>
@@ -61,7 +74,7 @@ const styles = StyleSheet.create({
     container_filho: {
         justifyContent: 'space-between',
         width: '90%',
-        height: 230,
+        height: 250,
         paddingLeft: 10,
         paddingRight: 10,
         paddingTop: 10,
@@ -76,7 +89,6 @@ const styles = StyleSheet.create({
 
     date: {
         fontSize: 18,
-        marginLeft: 18,
         marginBottom: 10,
         marginTop: 10,
     },
