@@ -19,6 +19,7 @@ export function LoginStackNavigator() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        debugger
         const getTokenData = async () => {
             try {
                 setTimeout(async () => {

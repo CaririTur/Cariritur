@@ -23,7 +23,6 @@ export default function DrawerNavigation() {
     return (
         <Drawer.Navigator
             initialRouteName="StackNavigation"
-            useLegacyImplementation={true}
             screenOptions={{drawerPosition: 'right', headerShown: false}}
         >
             <Drawer.Screen name="StackNavigation" component={StackNavigation} options={{

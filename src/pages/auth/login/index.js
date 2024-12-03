@@ -50,6 +50,7 @@ export function Login({navigation}) {
 
             <View>
                 <TouchableOpacity style={styles.button} onPress={() => {
+                    debugger
                     signIn({email, password})
                 }}>
                     <Text style={styles.text_button}>Entrar</Text>
