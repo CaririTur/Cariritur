@@ -75,7 +75,7 @@ export function LoginStackNavigator() {
             >
                 <Image source={Logo} />
                 <StatusBar style="auto" />
-                <Text style={{ fontWeight: "bold" }}>Por Grupo Genisys</Text>
+                {/* <Text style={{ fontWeight: "bold" }}>Por Grupo Genisys</Text> */}
             </TouchableOpacity>
         );
     }

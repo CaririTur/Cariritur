@@ -37,8 +37,8 @@ export default function Eventos() {
                 }
                 renderItem={({ item }) => (
                     <>
+                    <Text style={styles.date}>{item.curiosities}</Text>
                         <View style={styles.container}>
-                            <Text style={styles.date}>{item.curiosities}</Text>
                             <TouchableOpacity
                                 style={styles.container_filho}
                                 onPress={() => {
@@ -89,8 +89,10 @@ const styles = StyleSheet.create({
 
     date: {
         fontSize: 18,
+        fontWeight: "bold",
         marginBottom: 10,
         marginTop: 10,
+        marginLeft:'7%'
     },
 
     text: {

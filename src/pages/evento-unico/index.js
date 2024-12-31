@@ -4,72 +4,70 @@ import Agendinha from "../../../assets/icons/Agenda.svg";
 import GrupoPessoas from "../../../assets/icons/grupo_persons.svg";
 import Localizacao from "../../../assets/icons/location.svg";
 
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default function EventosUnicos({ route }) {
-
     const navigation = useNavigation();
     const { descricao, evento, foto, data, item_localiza, pessoa } = route.params;
 
-
     return (
         <>
-            <View style={styles.menuNavegacao}>
-                <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                    <Vector />
-                </TouchableOpacity>
+            <View style={{ backgroundColor: "#ffffff" }}>
+                <View style={{ alignItems: 'center', flexDirection: 'row', margin: '4%', marginLeft: '7%', marginRight: '5%' }}>
+                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+                        <Vector />
+                    </TouchableOpacity>
 
-                <View style={{ marginLeft: '5%', }}>
-                    <Text style={{ fontSize: 22, color: '#027DC1' }}>{evento}</Text>
+                    <View style={{ marginLeft: '5%' }}>
+                        <Text style={{ fontSize: 22, color: '#027DC1' }}>{evento}</Text>
+                    </View>
+
+                    <TouchableOpacity style={{ marginLeft: 'auto', marginRight: '3%' }} onPress={() => navigation.openDrawer()}>
+                        <Menu />
+                    </TouchableOpacity>
                 </View>
-
-                <TouchableOpacity style={{ marginLeft: 'auto', marginRight: '3%' }}>
-                    <Menu />
-                </TouchableOpacity>
             </View>
 
-            <View style={styles.containerPrincipal}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                <View style={styles.containerPrincipal}>
+                    <Image
+                        style={{ width: '100%', height: 250, borderRadius: 8 }} // Ajusta o tamanho da imagem
+                        source={{ uri: foto }}
+                    />
+                    <Text style={{ fontSize: 23, marginTop: 10, fontWeight: '500' }}>{evento}</Text>
 
-                <View>
-                    <Image style={{ height: '30%', borderRadius: 8, width: 350, marginLeft: 'auto', marginRight: 'auto' }} source={{ uri: foto }} />
-                    <Text style={{ marginLeft: '10%', marginRight: '10%', fontSize: 23 , marginTop:10}}>{evento}</Text>
-
-                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '8%' }}>
+                    <View style={{ flexDirection: 'row', marginTop: '8%' }}>
                         <Agendinha />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>10 de Julho</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '3%' }}>
+                    <View style={{ flexDirection: 'row', marginTop: '3%' }}>
                         <GrupoPessoas />
                         <Text style={{ fontSize: 20, marginLeft: '2%' }}>{pessoa}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', marginLeft: '10%', marginRight: '10%', marginTop: '3%' }}>
+                    <View style={{ flexDirection: 'row', marginTop: '3%', width: 'auto', alignItems: 'center' }}>
                         <Localizacao />
-                        <Text style={{ fontSize: 20, marginLeft: '2%' }}>{item_localiza}</Text>
+                        <Text style={{ fontSize: 18, marginLeft: '2%', width: 'auto' }}>{item_localiza}</Text>
                     </View>
 
-                    <View style={{ justifyContent: 'center' , alignItems: 'center', marginTop: 30 }}>
-                        <Text style={{ marginLeft: '10%', marginRight: '10%', fontSize: 18, marginBottom: '25%',}}>{descricao}</Text>
+                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 30 }}>
+                        <Text style={{ fontSize: 18, marginBottom: '25%', textAlign: 'justify', lineHeight: 22 }}>
+                            {descricao}
+                        </Text>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
-    menuNavegacao: {
-        marginTop: '10%',
-        marginLeft: '3%',
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
     containerPrincipal: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: '10%'
+        marginTop: '5%',
+        marginLeft: '7%',
+        marginRight: '7%',
     },
-})
+});

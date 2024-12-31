@@ -4,7 +4,7 @@ import {useState} from "react";
 
 
 const api = axios.create({
-    baseURL: "http://192.168.0.5:3000",
+    baseURL: "https://cariritur.gruposilva.dev.br/api/",
 })
 
 export default api;
